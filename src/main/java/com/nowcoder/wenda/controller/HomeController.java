@@ -1,23 +1,23 @@
 package com.nowcoder.wenda.controller;
 
-import com.nowcoder.wenda.aspect.LogAspect;
-import com.nowcoder.wenda.model.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
+        import com.nowcoder.wenda.aspect.LogAspect;
+        import com.nowcoder.wenda.model.User;
+        import org.slf4j.Logger;
+        import org.slf4j.LoggerFactory;
+        import org.springframework.http.HttpStatus;
+        import org.springframework.stereotype.Controller;
+        import org.springframework.ui.Model;
+        import org.springframework.web.bind.annotation.*;
+        import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.*;
+        import javax.servlet.http.Cookie;
+        import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpServletResponse;
+        import javax.servlet.http.HttpSession;
+        import java.util.*;
 
-//@Controller
-public class IndexController {
+@Controller
+public class HomeController {
     private static  final Logger logger= LoggerFactory.getLogger(LogAspect.class);
 
     @RequestMapping(path={"/","/index"},method = {RequestMethod.GET})   //如果返回“/”这样的地址，那就返回下面方法中的内容
@@ -37,7 +37,7 @@ public class IndexController {
         return String.format("Profile Page of %s / %d, type:%d key:%s",groupId,userId,type,key );
     }
 
-    @RequestMapping(path={"/vm","/index"},method = {RequestMethod.GET})
+    @RequestMapping(path={"/vm","/ix"},method = {RequestMethod.GET})
     public String template(Model model){
         model.addAttribute("value","price");
         List<String> colors = Arrays.asList(new String[] {"red","green","blue"});
@@ -88,7 +88,7 @@ public class IndexController {
         return sb.toString();
     }
 
-//    跳转
+    //    跳转
     @RequestMapping(path = {"/redirect/{code}"}, method = {RequestMethod.GET})
     public RedirectView redirect(@PathVariable("code") int code,
                                  HttpSession httpSession) {
@@ -110,7 +110,7 @@ public class IndexController {
         throw  new IllegalArgumentException("参数不对");  //抛出异常
     }
 
-//    异常的捕获
+    //    异常的捕获
     @ExceptionHandler()
     @ResponseBody
     public String error(Exception e) {
@@ -118,3 +118,4 @@ public class IndexController {
         return "error:" + e.getMessage();
     }
 }
+

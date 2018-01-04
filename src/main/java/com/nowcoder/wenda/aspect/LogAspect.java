@@ -24,7 +24,7 @@ public class LogAspect {
         logger.info("before method:" + sb.toString());
     }
 
-    @After("execution(* com.nowcoder.wenda.controller.IndexController.*(..))")
+    @After("execution(* com.nowcoder.wenda.controller.*Controller.*(..))")
     public void afterMethod() {
         logger.info("after method" + new Date());
     }
