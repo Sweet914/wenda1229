@@ -1,0 +1,38 @@
+<html>
+<body>
+<pre>
+    $!{value}
+    $!{value1}
+    colors: $!{colors}
+    #foreach($color in $colors)
+    Color${foreach.count}/${foreach.index}:$!{color}
+    #end
+
+    #foreach($key in $map.keySet())
+       Number: $key , Value: $map.get($key)
+    #end
+
+    #foreach($kv in $map.entrySet())
+       Number: $kv.key , Value: $kv.value
+    #end
+
+    <!--当调用user.name时，会先查询是否有getName（）的方法，如果有就显示-->
+    User: $!{user.name}
+          $!{user.getName()}
+          $!{user.description}  <!--当调用.description时，会先查询是否有getDescription()的方法，如果有就显示-->
+          $!{user.getDescription()}
+
+    <!--模板可以设置变量-->
+    #set($title="nowcoder")
+    Title:$!{title}
+
+    <!--模板继承-->
+    #parse("head.html" ) <!--变量解析-->
+    #include("head.html")   <!--纯文本扩展-->
+
+    #macro (render_color, $index, $color)
+        Color Render Macro $index, $color
+    #end
+</pre>
+</body>
+</html>
