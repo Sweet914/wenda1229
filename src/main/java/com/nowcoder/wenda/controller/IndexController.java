@@ -49,7 +49,7 @@ public class IndexController {
         }
         model.addAttribute("map",map);
 
-        model.addAttribute("user",new User("Lee"));
+//        model.addAttribute("user",new User("Lee"));
         return  "home";
     }
 
